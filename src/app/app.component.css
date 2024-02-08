@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0; /* Add your desired background color */
+  }
+  
+  .header-item {
+    margin-right: 20px; /* Adjust the margin as needed for spacing between items */
+  }
+  
+  img {
+    max-height: 50px; /* Set a maximum height for the images if needed */
+    max-width: 100%; /* Make sure images don't exceed their container */
+  }
+  
