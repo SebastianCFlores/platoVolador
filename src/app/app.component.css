@@ -3,16 +3,16 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: #ffffff; /* Add your desired background color */
+    background-color: #ffffff; 
   }
   
   .header-item {
-    margin-right: 20px; /* Adjust the margin as needed for spacing between items */
+    margin-right: 20px; 
   }
   
   img {
-    max-height: 50px; /* Set a maximum height for the images if needed */
-    max-width: 100%; /* Make sure images don't exceed their container */
+    max-height: 80px; 
+    max-width: 100%; 
   }
   
   .main-image{
