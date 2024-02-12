@@ -15,3 +15,6 @@ header {
     max-width: 100%; /* Make sure images don't exceed their container */
   }
   
+  .main-image{
+    max-height: 100%;
+  }
