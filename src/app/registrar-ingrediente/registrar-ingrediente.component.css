@@ -1,0 +1,62 @@
+html{
+    height: 100%;
+}
+body {
+    margin : 0px;
+}
+.contenedor{
+    margin: 50px auto;  
+    width: 400px;
+    padding: 30px;
+    background: white;
+    border: 3px solid brown;
+    border-radius: 30px;
+}
+.contenedor h2{
+    margin: 0 0 30px;
+    padding: 0;
+    font-size: 30px;
+    color: brown;
+    text-align: center;
+}
+.contenedor .elemento label{
+    color: brown;
+}
+.contenedor .elemento input[type="text"]{
+    width: 100%;
+    padding: 10px 0;
+    color: brown;
+    border: 1px solid brown;
+    border-radius: 30px;
+}
+.contenedor .elemento input[type="email"]{
+    width: 100%;
+    padding: 10px 0;
+    color: brown;
+    border: 1px solid brown;
+    border-radius: 30px;
+}
+.contenedor .elemento input[type="password"]{
+    width: 100%;
+    padding: 10px 0;
+    color: brown;
+    border: 1px solid brown;
+    border-radius: 30px;
+}
+.contenedor .elemento input[type="submit"]{
+    width: 100%;
+    padding: 10px 0;
+    color: black;
+    background: rgb(227, 222, 222);
+    border-radius: 30px;
+    border: none;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 15px; 
+    margin-top: 30px;
+}
+.contenedor .elemento input{
+    margin-bottom: 30px;
+
+}
