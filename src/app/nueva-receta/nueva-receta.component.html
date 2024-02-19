@@ -1,1 +1,58 @@
-<p>nueva-receta works!</p>
+<!-- <p>nueva-receta works!</p> -->
+<!-- <div class="card" style="width:25rem">
+<div class="card-body">
+    <form [formGroup]="formTemplate">
+        <div class="text-center">
+            <img [src]="imgSrc" width="150px" height="100px">
+        </div>
+        <div class="form-group">
+            <label>Seleccione archivo</label>
+            <input type="file" class="form-control" formControlName="imageUrl">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" formControlName="name" placeholder="Nombre">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" formControlName="description" placeholder="descripcion">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success float-right">Registrar</button>
+        </div>
+    </form>
+</div>
+</div> -->
+<div class="card" style="width:25rem">
+    <div class="card-body">
+        <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+            <div class="text-center">
+                <img [src]="imgSrc" width="150px" height="100px" (click)="fileUploader.click()">
+            </div>
+            <div class="form-group">
+                <label>Seleccione archivo</label>
+                <input type="file" class="form-control" #fileUploader formControlName="imageUrl" (change)="showPreview($event)">
+            </div>
+            <div class="form-group">
+                <!-- <mat-form-field >
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name">
+                  </mat-form-field> -->
+                  <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput  formControlName="name">
+                    @if (isSubmitted && formControls.name.errors?.['required']) {
+                      <mat-error>Nombre requerido</mat-error>
+                    } 
+                  </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Descripcion</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success float-right">Registrar</button>
+            </div>
+        </form>
+    </div>
+    </div>

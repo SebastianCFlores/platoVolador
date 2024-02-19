@@ -7,7 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage} from '@angular/fire/storage';
-
+import { provideHttpClient } from "@angular/common/http";
 const firebaseConfig = 
   {
     apiKey: "AIzaSyBuC96tE6qc2n2ncqmDzQtHKz-meY9IqYc",
@@ -25,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-  ])
+  ]),
+  provideHttpClient()
   ]
 };
