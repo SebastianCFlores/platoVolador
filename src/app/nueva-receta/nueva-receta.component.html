@@ -48,6 +48,34 @@
                 <mat-form-field>
                     <mat-label>Descripcion</mat-label>
                     <textarea matInput formControlName="description"></textarea>
+                    @if (isSubmitted && formControls.description.errors?.['required']) {
+                        <mat-error>Descripcion requerido</mat-error>
+                      } 
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Pasos</mat-label>
+                    <textarea matInput formControlName="steps"></textarea>
+                    @if (isSubmitted && formControls.steps.errors?.['required']) {
+                        <mat-error>Campo requerido</mat-error>
+                      } 
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Nota</mat-label>
+                    <textarea matInput formControlName="note"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Ingredientes</mat-label>
+                    <mat-select formControlName="ingredient" multiple>
+                    @for (ingredient of ingredients; track ingredient) {
+                        <mat-option [value]="ingredient">{{ingredient.nombre}}</mat-option>
+                    }
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div class="form-group">

@@ -2,6 +2,8 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { Recipe } from '../models/recipe';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 type CardContent = {
   title: string;
   description: string;
@@ -13,16 +15,16 @@ type CardContent = {
   standalone: true,
   template: `
     <div class="container responsive-grid">
-      <mat-card *ngFor="let card of cards()">
+      <mat-card *ngFor="let recipe of recipe()">
         <mat-card-header>
-          <mat-card-title>{{ card.title }}</mat-card-title>
+          <mat-card-title>{{ recipe.nombre }}</mat-card-title>
         </mat-card-header>
         <br/>
-        <img mat-card-image [src]="card.imageUrl" />
+        <img mat-card-image [src]="recipe.imagenurl" />
         <mat-card-content>
           <br/>
           <p>
-            {{ card.description }}
+            {{ recipe.descripcion }}
           </p>
         </mat-card-content>
         <mat-card-actions>
@@ -76,31 +78,45 @@ type CardContent = {
 //         console.error('Error al obtener usuarios', error);
 //       });
 //   }
-export class RecetasComponent {
-  cards = signal<CardContent[]>([]);
+export class RecetasComponent implements OnInit{
+  recipe = signal<Recipe[]>([]);
+  API_URI = 'http://localhost:3000';
   // identificador de imagen en unsplash
-  images = [
-    'kr9HOdBFjuk',
-    'ifjEbN18R44',
-    'urMbGaBBjbg',
-    '05_yqWFbc2E',
-    'O2hktlhRAyg',
-    'Jd3Ai-1f9H0',
-    'SWbCLJBDVnA',
-    'x7peUIju0u0',
-    'vH0UeskIkD8',
-    'sm-LdPd-Ilc',
-  ];
-  constructor(){
-    const cards: CardContent[] = [];
-    for(let i=0; i < this.images.length; i++){
-      cards.push({
-        title: `Card ${i + 1}`,
-        description: `Far far away, behind the word mountains, far from the countries Vokalia and
-        Consonantia, there`,
-        imageUrl: `https://source.unsplash.com/${this.images[i]}/300X300`,
-      });
+  // images = [
+  //   'kr9HOdBFjuk',
+  //   'ifjEbN18R44',
+  //   'urMbGaBBjbg',
+  //   '05_yqWFbc2E',
+  //   'O2hktlhRAyg',
+  //   'Jd3Ai-1f9H0',
+  //   'SWbCLJBDVnA',
+  //   'x7peUIju0u0',
+  //   'vH0UeskIkD8',
+  //   'sm-LdPd-Ilc',
+  // ];
+  recipes: Recipe[] = [];
+  ngOnInit() {
+    
+  }
+
+  getRecipes(){
+    this.http.get<Recipe[]>(`${this.API_URI}/getrecipes`).subscribe(
+      (res) => {this.recipes = res}
+    );
+  }
+
+  constructor(private http: HttpClient){
+    this.getRecipes();
+    const recipes: Recipe[] = [];
+    for(let i=0; i < this.recipes.length; i++){
+      recipes.push(
+        // title: `Card ${i + 1}`,
+        // description: `Far far away, behind the word mountains, far from the countries Vokalia and
+        // Consonantia, there`,
+        // imageUrl: `https://source.unsplash.com/${this.images[i]}/300X300`,
+        this.recipes[i]
+      );
     }
-    this.cards.set(cards);
+    this.recipe.set(recipes);
   }
 }

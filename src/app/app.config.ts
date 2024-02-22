@@ -17,7 +17,9 @@ const firebaseConfig =
     messagingSenderId: "33710573890",
     appId: "1:33710573890:web:64ad33f06a425dea2de0db"
   }
+  // var app = angular.module('app', []);
 
+  // app.config();
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync(),
@@ -26,6 +28,5 @@ export const appConfig: ApplicationConfig = {
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
   ]),
-  provideHttpClient()
-  ]
-};
+  provideHttpClient(),
+]};
