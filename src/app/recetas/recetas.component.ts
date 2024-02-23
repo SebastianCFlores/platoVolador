@@ -4,6 +4,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { Recipe } from '../models/recipe';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Router, NavigationExtras } from '@angular/router';
 type CardContent = {
   title: string;
   description: string;
@@ -13,7 +14,7 @@ type CardContent = {
 @Component({
   selector: 'app-recetas',
   standalone: true,
-  template: `
+  /*template: `
     <div class="container responsive-grid">
       <mat-card *ngFor="let recipe of recipe()">
         <mat-card-header>
@@ -28,7 +29,7 @@ type CardContent = {
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>Ver Receta</button>
+          <button mat-button (click)="onDetailsClick(recipe)">Ver Receta</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -49,9 +50,9 @@ type CardContent = {
         gap: 24px;
       }
     `,
-  ],
+  ],*/
   imports: [CommonModule, MatCardModule, MatButtonModule],
-  //templateUrl: './recetas.component.html',
+  templateUrl: './recetas.component.html',
   styleUrl: './recetas.component.css'
 })
 // export class RecetasComponent implements OnInit {
@@ -105,7 +106,7 @@ export class RecetasComponent implements OnInit{
     );
   }
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private router: Router){
     this.getRecipes();
     const recipes: Recipe[] = [];
     for(let i=0; i < this.recipes.length; i++){
@@ -119,4 +120,9 @@ export class RecetasComponent implements OnInit{
     }
     this.recipe.set(recipes);
   }
+  onDetailsClick(recipe: Recipe){
+    
+    this.router.navigate(['/detalle'], { queryParams: recipe });
+  }
+
 }

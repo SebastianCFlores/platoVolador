@@ -16,7 +16,7 @@ import { initializeApp } from "firebase/app";
 import { uploadBytes,uploadBytesResumable, ref, getDownloadURL, getStorage} from 'firebase/storage';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Recipe } from '../models/recipe';
-import { Ingredients, Numero } from '../models/ingredients';
+import { Ingredients} from '../models/ingredients';
 @Component({
   selector: 'app-nueva-receta',
   standalone: true,
